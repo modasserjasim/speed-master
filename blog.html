@@ -80,6 +80,32 @@
                 <li>The event queue is responsible for sending new functions to the stack for processing. It follows the queue data structure to maintain the correct sequence in which all operations should be sent for execution.</li>
                 </ol>
                 <img class="blog-img" src="event-loop.png" alt="">
+                <h4>Function calls form a stack of frames.</h4>
+                <div class="code">
+                    <code>
+                        function foo(b) { <br>
+                            const a = 10; <br>
+                            return a + b + 11; <br>
+                          } <br> <br>
+                          
+                          function bar(x) { <br>
+                            const y = 3; <br>
+                            return foo(x * y); <br>
+                          } <br><br>
+                          
+                          const baz = bar(7); // assigns 42 to baz
+                    </code>
+                </div>
+                <h3>Event loop</h3>
+                <p>The event loop got its name because of how it's usually implemented, which usually resembles:</p>
+                <div class="code">
+                    <code>
+                        while (queue.waitForMessage()) {<br>
+                            queue.processNextMessage(); <br>
+                          }
+                    </code>
+                </div>
+                <p>queue.waitForMessage() waits synchronously for a message to arrive (if one is not already available and waiting to be handled).</p>
             </div>
             <div class="faq-item">
                 <h2>4. The ways we can get undefined:</h2>
