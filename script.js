@@ -41,15 +41,17 @@ const typeController = (e) => {
   userText += newLetter;
 
   const newLetterCorrect = validate(newLetter);
+  console.log(newLetterCorrect);
 
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
   } else {
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
+    errorCount++;
   }
 
   // check if given question text is equal to user typed text
-  if (questionText.length === userText.length) {
+  if (questionText === userText) {
     gameOver();
   }
 };
@@ -57,7 +59,7 @@ const typeController = (e) => {
 const validate = (key) => {
   if (key === questionText[userText.length - 1]) {
     return true;
-  }
+  } 
   return false;
 };
 
@@ -103,7 +105,7 @@ const start = () => {
   // If already started, do not start again
   if (startTime) return;
 
-  let count = 3;
+  let count = 1;
   countdownOverlay.style.display = "flex";
 
   const startCountdown = setInterval(() => {
