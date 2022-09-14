@@ -17,14 +17,14 @@ body {
 }
 
 #question {
-  height: 100px;
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-size: 25px;
   text-align: center;
-  padding: 0 30px;
+  padding: 20px 20px;
   border-radius: 15px;
   background: rgb(255, 255, 255);
   background: linear-gradient(
@@ -37,11 +37,11 @@ body {
 }
 
 #display {
-  height: 100px;
+  min-height: 100px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding-left: 5rem;
+  padding: 2rem 5rem;
   color: white;
   font-size: 32px;
   background-color: #171717;
@@ -147,16 +147,12 @@ button {
 }
 
 #histories {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 20px;
+  column-gap: 20px;
   text-align: center;
-}
-#histories h1{
-  width: 80%;
-}
-.time-taken{
-  padding: 10px 0;
+  margin-bottom: 60px;
 }
 
 .card {
@@ -164,9 +160,10 @@ button {
   height: 100%;
   padding: 50px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 30px 30px;
   color: white;
   border-radius: 15px;
   background: rgb(255, 255, 255);
@@ -193,6 +190,18 @@ button {
   top: 0;
 }
 
+@media only screen and (min-width: 701px) and (max-width: 992px){
+  .box-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  #histories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+  }
+}
+
 @media only screen and (max-width: 700px) {
   .box-container {
     padding: 0 20px;
@@ -201,8 +210,19 @@ button {
   .card {
     flex-direction: column;
   }
+  #histories {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    text-align: center;
+  }
   #histories .card h3{
+    width: 100%;
     border-bottom: 1px solid #515151;
     padding-bottom: 10px;
+    text-align: center;
+  }
+  #display {
+    padding: 20px;
+    font-size: 28px;
   }
 }

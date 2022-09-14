@@ -31,10 +31,16 @@ function displayHistory() {
 
     newRow.innerHTML = `
   <h3>${test.questionText}</h3>
-  <p class="time-taken">You took: <span class="bold">${test.timeTaken}</span> seconds</p>
+  <p>You took: <span class="bold">${test.timeTaken}</span> seconds</p>
     <p>You made <span class="bold red">${test.errorCount}</span> mistakes</p>
   `;
 
     histories.appendChild(newRow);
   });
 }
+// stop scrolling when press space button
+window.addEventListener('keydown', (e) => {  
+  if (e.keyCode === 32 && e.target === document.body) {  
+    e.preventDefault();  
+  }  
+});
