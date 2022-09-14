@@ -15,7 +15,136 @@
 <body>
     <div class="box-container">
         <h1 class="blog-heading">4 Common JS Questions and Answers</h1>
-        
+        <div class="faqs-container">
+            <div class="faq-item">
+                <h2>1. Difference between local storage and session storage:</h2>
+                <h3>Local Storage:</h3>
+                <ol>
+                    <li><strong>Local storage</strong> is a more modern storage space for web pages. Its size capacity could reach up to 5MB/10MB, depending on browser.</li>
+                <li>Information stored in local storage will not be deleted. One must delete them manually or wait for JavaScript to call localStorage.clear() or localStorage.removeItem(key).</li>
+                <li>However, data stored in local storage will not be sent to server automatically with HTTP request.</li>
+                </ol>
+                <div class="code">
+                    <code>
+                        localStorage.setItem('myCat', 'Tom'); // setItem <br><br>
+                        const cat = localStorage.getItem('myCat'); // getItem <br><br>
+                        localStorage.removeItem('myCat'); // removeItem <br><br>
+                        localStorage.clear(); // clear all <br>
+                    </code>
+                </div>
+                <h3>Session Storage:</h3>
+                <ol>
+                    <li><strong>The storage</strong> capacity of session storage is 5MB</li>
+                <li>Unlike local storage, information in session storage will be deleted when the session ends, for example, closing browser.</li>
+                <li>Data is only available during the page session. Changes made are saved and available for the current page, as well as future visits to the site on the same tab/window. Once the tab/window is closed, the data is deleted.</li>
+                </ol>
+            </div>
+            <div class="faq-item">
+                <h2>2. Difference between global scope and block scope in JavaScript:</h2>
+                <h3>The Global scope:</h3>
+                <p>A variable exists inside or outside a block. If a variable is declared outside all functions or curly braces ({}), it exists in the global scope. The global variables can be accessed by any line of code in the program, including inside blocks.</p>
+                <div class="code">
+                    <code>
+                        // program to print a text <br>
+                        let a = "hello";<br>
+    
+                        function greet () {<br>
+                            console.log(a);<br>
+                        }<br>
+                        greet(); // hello<br>
+                    </code>
+                </div>
+                <h3>The Block Scope:</h3>
+                <p>A block scoped variable means that the variable defined within a block will not be accessible from outside the block. A block can reside inside a function, and a block scoped variable will not be available outside the block even if the block is inside a function.</p>
+                <div class="code">
+                    <code>
+                        function foo(){ <br>
+                            if(true){<br>
+                                const fruit1 = 'banana';     //exist in block scope<br>
+                                let fruit2 = 'strawberry';   //exist in block scope<br>
+                            }<br>
+                            console.log(fruit1); //error: fruit2 is not defined <br>
+                            console.log(fruit2); //error: fruit3 is not defined<br>
+                        }<br>
+                        
+                        foo();
+                    </code>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h2>3. What is an event loop in JavaScript?</h2>
+                <h3>The event loop:</h3>
+                <ol>
+                    <li>The event loop is the secret behind JavaScript’s asynchronous programming. JS executes all operations on a single thread, but using a few smart data structures, it gives us the illusion of multi-threading. Let’s take a look at what happens on the back-end.</li>
+                <li>The call stack is responsible for keeping track of all the operations in line to be executed. Whenever a function is finished, it is popped from the stack.</li>
+                <li>The event queue is responsible for sending new functions to the stack for processing. It follows the queue data structure to maintain the correct sequence in which all operations should be sent for execution.</li>
+                </ol>
+                <img class="blog-img" src="event-loop.png" alt="">
+            </div>
+            <div class="faq-item">
+                <h2>4. The ways we can get undefined:</h2>
+                <h3>undefined value:</h3>
+                <p>you will receive undefined when accessing uninitialized variables, non-existing object properties, non-existing array elements, and alike.</p>
+                <h4>Scenarios that create undefined:</h4>
+                <h4>1. Uninitialized variable:</h4>
+                <p>A declared variable but not yet assigned with a value (uninitialized) is by default undefined.</p>
+                <div class="code">
+                    <code>
+                        let myVariable;<br>
+                        myVariable; // => undefined
+                    </code>
+                </div>
+                <h4>2. Accessing a non-existing property:</h4>
+                <p>When accessing a non-existing object property, JavaScript returns undefined.</p>
+                <div class="code">
+                    <code>
+                        let favoriteMovie = {<br>
+                            title: 'Blade Runner'<br>
+                          };<br>
+                          favoriteMovie.actors; // => undefined
+                    </code>
+                </div>
+                <h4>3. Function parameters:</h4>
+                <p>The function parameters implicitly default to undefined.</p>
+                <div class="code">
+                    <code>
+                        function multiply(a, b) { //a => 5, b => undefined<br>
+                            return a * b;<br>
+                          }<br>
+                          multiply(5); // => NaN
+                    </code>
+                </div>
+                <h4>4. Function return value:</h4>
+                <p>Implicitly, without return statement, a JavaScript function returns undefined.</p>
+                <div class="code">
+                    <code>
+                        function square(x) {<br>
+                            const res = x * x;<br>
+                          }<br>
+                          square(2); // => undefined
+                    </code>
+                </div>
+                <h4>5. void operator:</h4>
+                <p>void expression evaluates the expression and returns undefined no matter the result of the evaluation.</p>
+                <div class="code">
+                    <code>
+                        void 1;                    // => undefined <br>
+                        void (false);              // => undefined <br>
+                        void {name: 'John Smith'}; // => undefined <br>
+                        void Math.min(1, 3);       // => undefined <br>
+                    </code>
+                </div>
+                <h4>6. undefined in arrays:</h4>
+                <p>You get undefined when accessing an array element with an out of bounds index.</p>
+                <div class="code">
+                    <code>
+                        const colors = ['blue', 'white', 'red']; <br>
+                        colors[5];  // => undefined <br>
+                        colors[-1]; // => undefined
+                    </code>
+                </div>
+
+        </div>
     </div>
 </body>
 
