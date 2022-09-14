@@ -23,6 +23,8 @@ body {
   justify-content: center;
   color: white;
   font-size: 25px;
+  text-align: center;
+  padding: 0 30px;
   border-radius: 15px;
   background: rgb(255, 255, 255);
   background: linear-gradient(
@@ -74,6 +76,9 @@ body {
   color: white;
   text-align: center;
   padding: 2rem;
+}
+.close-btn{
+  margin-top: 40px;
 }
 #show-time{
   text-align: center;
@@ -145,6 +150,13 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  text-align: center;
+}
+#histories h1{
+  width: 80%;
+}
+.time-taken{
+  padding: 10px 0;
 }
 
 .card {
@@ -188,5 +200,9 @@ button {
   }
   .card {
     flex-direction: column;
+  }
+  #histories .card h3{
+    border-bottom: 1px solid #515151;
+    padding-bottom: 10px;
   }
 }
