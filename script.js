@@ -76,10 +76,10 @@ const gameOver = () => {
   // calculation of Gross WPM
   const grossWPM = (totalCharTyped / 5) / (timeTaken / 60);
   // Calculation of Net WPM
-  const TotalnetWPM = grossWPM - ((errorCount / 5) / (timeTaken / 60));
-  const netWPM = Math.round(TotalnetWPM);
+  const totalNetWPM = grossWPM - ((errorCount / 5) / (timeTaken / 60));
+  const netWPM = Math.round(totalNetWPM);
   // Calculation of Accuracy
-  const accuracy = ((TotalnetWPM / grossWPM) * 100).toFixed(2);
+  const accuracy = ((totalNetWPM / grossWPM) * 100).toFixed(2);
   // console.log(`Gross WPM: ${grossWPM}, net WPM: ${netWPM}, Accuracy: ${accuracy +'%'}`);
 
   // show result modal
