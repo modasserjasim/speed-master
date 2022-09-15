@@ -20,23 +20,16 @@
                 <h2>1. Difference between local storage and session storage:</h2>
                 <h3>Local Storage:</h3>
                 <ol>
-                    <li><strong>Local storage</strong> is a more modern storage space for web pages. Its size capacity could reach up to 5MB/10MB, depending on browser.</li>
-                <li>Information stored in local storage will not be deleted. One must delete them manually or wait for JavaScript to call localStorage.clear() or localStorage.removeItem(key).</li>
-                <li>However, data stored in local storage will not be sent to server automatically with HTTP request.</li>
+                    <li><strong>Local storage</strong> is a more modern storage space for web pages. Stores data with no expiration date, and gets cleared only through JavaScript, or clearing the Browser cache / Locally Stored Data</li>
+                <li>As it is not session-based and information stored in local storage will not be deleted. One must delete them manually or wait for JavaScript to call localStorage.clear() or localStorage.removeItem(key).</li>
+                <li>The storage capacity of local storage is 5MB/10MB	</li>
                 </ol>
-                <div class="code">
-                    <code>
-                        localStorage.setItem('myCat', 'Tom'); // setItem <br><br>
-                        const cat = localStorage.getItem('myCat'); // getItem <br><br>
-                        localStorage.removeItem('myCat'); // removeItem <br><br>
-                        localStorage.clear(); // clear all <br>
-                    </code>
-                </div>
+
                 <h3>Session Storage:</h3>
                 <ol>
-                    <li><strong>The storage</strong> capacity of session storage is 5MB</li>
-                <li>Unlike local storage, information in session storage will be deleted when the session ends, for example, closing browser.</li>
-                <li>Data is only available during the page session. Changes made are saved and available for the current page, as well as future visits to the site on the same tab/window. Once the tab/window is closed, the data is deleted.</li>
+                    <li><strong>The session storage</strong> stores data only for a session, meaning that the data is stored until the browser (or tab) is closed.</li>
+                <li>It’s session-based and works per window or tab. This means that data is stored only for the duration of a session, i.e., until the browser (or tab) is closed</li>
+                <li>The storage capacity of session storage is 5MB </li>
                 </ol>
             </div>
             <div class="faq-item">
@@ -96,7 +89,7 @@
                           const baz = bar(7); // assigns 42 to baz
                     </code>
                 </div>
-                <h3>Event loop</h3>
+                <h3>Event loop - Queue</h3>
                 <p>The event loop got its name because of how it's usually implemented, which usually resembles:</p>
                 <div class="code">
                     <code>
