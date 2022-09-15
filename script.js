@@ -8,6 +8,7 @@ const modalBackground = document.getElementById("modal-background");
 // variables
 let userText = "";
 let errorCount = 0;
+let totalCharTyped = 0;
 let startTime;
 let questionText = "";
 
@@ -41,10 +42,11 @@ const typeController = (e) => {
   userText += newLetter;
 
   const newLetterCorrect = validate(newLetter);
-  console.log(newLetterCorrect);
+  // console.log(newLetterCorrect);
 
   if (newLetterCorrect) {
     display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
+    totalCharTyped++;
   } else {
     display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
     errorCount++;
@@ -71,6 +73,14 @@ const gameOver = () => {
   const finishTime = new Date().getTime();
   const timeTaken = parseInt((finishTime - startTime) / 1000);
 
+  // calculation of Gross WPM
+  const grossWPM = Math.round((totalCharTyped / 5) / (timeTaken / 60));
+  // Calculation of Net WPM
+  const netWPM = Math.round(grossWPM - ((errorCount / 5) / (timeTaken / 60)));
+  // Calculation of Accuracy
+  const accuracy = ((netWPM / grossWPM) * 100).toFixed(2);
+  console.log(`${totalCharTyped}, ${errorCount}, Gross WPM: ${grossWPM}, net WPM: ${netWPM}, Accuracy: ${accuracy +'%'}`);
+
   // show result modal
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
@@ -84,14 +94,17 @@ const gameOver = () => {
     <h1>Finished!</h1>
     <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
     <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
+    <p>Your score: <span class="bold">${netWPM}</span> WPM</p>
+    <p>Your Accuracy: <span class="bold green">${accuracy}</span>%</p>
     <button class="close-btn" onclick="closeModal()">Close</button>
   `;
 
-  addHistory(questionText, timeTaken, errorCount);
+  addHistory(questionText, timeTaken, errorCount, netWPM, accuracy);
 
   // restart everything
   startTime = null;
   errorCount = 0;
+  totalCharTyped = 0;
   userText = "";
   display.classList.add("inactive");
 };
